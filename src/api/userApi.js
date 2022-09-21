@@ -2,7 +2,7 @@ import axios from 'axios'
 // user apis
 
 // const url = 'http://localhost:5015/api/user/'
-const url = 'https://referral-io.adaptable.app/api/user'
+const url = 'https://referral-io.adaptable.app/api/user/'
 
 export const registerUserRequest = async (name, email, password) => {
   try {
