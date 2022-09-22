@@ -15,7 +15,7 @@ export const registerUserRequest = async (name, email, password) => {
 
 export const logInUserRequest = async(email, password) => {
   try {
-    return await axios.post(url + 'login',{headers: {'Content-Type': 'application/json',"Accept": "application/json",}}, {email: email, password: password})
+    return await axios.post(url + 'login', {email: email, password: password},{headers: {'Content-Type': 'application/json',"Accept": "application/json",}})
   } catch (error) {
     console.log(error)
     return error
