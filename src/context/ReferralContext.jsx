@@ -111,6 +111,8 @@ function ReferalProvider({ children }) {
 
 	const logIn = async (email, passowrd) => {
 		const res = await logInUserRequest(email, passowrd);
+		console.log(res);
+		console.log(passowrd);
 		if (res?.response?.status === 401) {
 			toast("Email or Passowrd are incorrect");
 		} else if (res.status === 200) {
