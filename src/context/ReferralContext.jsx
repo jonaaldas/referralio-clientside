@@ -165,9 +165,9 @@ function ReferalProvider({ children }) {
 			toast("Email or Passowrd are incorrect");
 		} else if (res.status === 200) {
 			localStorage.setItem("user", JSON.stringify(res.data));
+			getAllReferrals();
 			navigate("/");
 			setAlreadyHaveAccount((prevSignUp) => !prevSignUp);
-			getAllReferrals();
 		}
 	};
 

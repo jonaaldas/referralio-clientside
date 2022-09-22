@@ -2,10 +2,8 @@ import TimeOfDay from "./TimeOfDay";
 import { useNavigate, Link } from "react-router-dom";
 import { useReferralContext } from "../context/ReferralContext";
 import FilterButtons from "./FilterButtons";
-import { useEffect } from "react";
 
 function Dashboard() {
-	// useEffect
 	const { filteredReferrals, deleteReferral } = useReferralContext();
 
 	const navigate = useNavigate();
