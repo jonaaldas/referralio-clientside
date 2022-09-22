@@ -6,6 +6,8 @@ import DashboardPage from "./pages/DashboardPage";
 import UpdateForgotPasswordPage from "./pages/UpdateForgorPasswordFormPage";
 import ProtectedRoutes from "./components/PtotectedRoutes";
 import { ToastContainer } from "react-toastify";
+import CreateEditForm from "./components/CreateEditForm";
+import EachReferralDashboardPage from "./pages/EachReferralDashboardPage";
 
 function App() {
 	return (
@@ -24,6 +26,17 @@ function App() {
 				/>
 				<Route element={<ProtectedRoutes />}>
 					<Route exact path='/' element={<DashboardPage />} />
+					<Route exact path='/create-referral' element={<CreateEditForm />} />
+					<Route
+						exact
+						path='/update-referral/:id'
+						element={<CreateEditForm />}
+					/>
+					<Route
+						exact
+						path='/client-information/:id'
+						element={<EachReferralDashboardPage />}
+					/>
 				</Route>
 			</Routes>
 			<ToastContainer />

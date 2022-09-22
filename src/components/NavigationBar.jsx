@@ -11,9 +11,11 @@ function NavigationBar() {
 
 				<div className='flex items-center justify-end flex-1 '>
 					<h3 className=' text-slate-50 flex items-center gap-4 px-2'>
-						{user ? `Hi, ${JSON.parse(user).name}` : null}
+						{localStorage.getItem("user")
+							? `Hi, ${JSON.parse(localStorage.getItem("user")).name}`
+							: null}
 					</h3>
-					{user ? (
+					{localStorage.getItem("user") ? (
 						<button
 							className='inline-flex items-center justify-center px-3 py-1 bg-blue-500 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-blue-700 active:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring focus:ring-blue-200 disabled:opacity-25 transition'
 							onClick={logOut}

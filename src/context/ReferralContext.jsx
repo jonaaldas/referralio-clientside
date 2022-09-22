@@ -1,4 +1,10 @@
-import { useState, createContext, useContext } from "react";
+import {
+	useState,
+	createContext,
+	useContext,
+	useEffect,
+	useCallback,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import {
 	logInUserRequest,
@@ -9,6 +15,13 @@ import {
 } from "../api/userApi";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {
+	createReferralRequest,
+	getAllReferralsRequest,
+	getOneReferralRequest,
+	editReferralRequest,
+	deleteReferralRequest,
+} from "../api/referralsApi";
 export const ReferralContext = createContext();
 
 export function useReferralContext() {
@@ -24,6 +37,57 @@ function ReferalProvider({ children }) {
 	const [alreadyHaveAccount, setAlreadyHaveAccount] = useState(false);
 	// state to store user from localStorage
 	const [user, setUser] = useState("");
+	// flag to compare buttons
+	const [activeButtons, setActiveButtons] = useState("");
+	// filtered referrals (seller and buyers)
+	const [filteredReferrals, setFilteredReferrals] = useState([]);
+
+	// ==============Referral manipulation Crud =================
+	const getAllReferrals = async () => {
+		let token = getToken();
+		let res = await getAllReferralsRequest(token);
+		setReferrals(res.data);
+	};
+
+	const createReferral = async (referral) => {
+		let token = getToken();
+		const res = await createReferralRequest(referral, token);
+		if (res.status === 200) {
+			toast("New Referral created");
+			setReferrals((prevReferrals) => [...prevReferrals, res.data]);
+		}
+	};
+
+	const getOneReferral = async (referralId) => {
+		let token = getToken();
+		return await getOneReferralRequest(referralId, token);
+	};
+
+	// edit Referral
+	const editReferralInformation = async (referral, referralId) => {
+		let token = getToken();
+		const res = await editReferralRequest(token, referral, referralId);
+		setReferrals(
+			referrals.map((clientReferral) =>
+				clientReferral._id === referralId ? res.data : clientReferral
+			)
+		);
+		toast("Referral has been updated");
+	};
+
+	// delete Referral
+	const deleteReferral = async (referralId) => {
+		let token = getToken();
+		const res = await deleteReferralRequest(token, referralId);
+		if (res.status === 200) {
+			toast("Referral Deleted");
+			let referralClient = referrals.filter((x) => {
+				return x._id !== referralId;
+			});
+			setReferrals(referralClient);
+		}
+	};
+	// ============== Referral manipulation Crud END =================
 
 	// ============== User functions start =================
 	// const register
@@ -35,7 +99,6 @@ function ReferalProvider({ children }) {
 		} else if (res?.status === 201) {
 			localStorage.setItem("user", JSON.stringify(res.data));
 			navigate("/");
-			setUser(localStorage.getItem("user"));
 			setAlreadyHaveAccount((prevSignUp) => !prevSignUp);
 		}
 	};
@@ -52,7 +115,6 @@ function ReferalProvider({ children }) {
 			toast("Email or Passowrd are incorrect");
 		} else if (res.status === 200) {
 			localStorage.setItem("user", JSON.stringify(res.data));
-			setUser(localStorage.getItem("user"));
 			navigate("/");
 			setAlreadyHaveAccount((prevSignUp) => !prevSignUp);
 		}
@@ -80,15 +142,31 @@ function ReferalProvider({ children }) {
 	// const getUser = async (token) => {
 	// 	return await getUserRequest(token);
 	// };
+	const getToken = () => {
+		if (localStorage.getItem("user")) {
+			return JSON.parse(localStorage.getItem("user")).token;
+		}
+	};
+
+	// useEffect
+	useEffect(() => {
+		if (localStorage.getItem("user")) {
+			getAllReferrals();
+		}
+	}, [getAllReferrals]);
 
 	// ============== User Functions Ends =================
-
 	return (
 		<ReferralContext.Provider
 			value={{
 				alreadyHaveAccount,
 				referrals,
 				user,
+				activeButtons,
+				filteredReferrals,
+				setReferrals,
+				setFilteredReferrals,
+				setActiveButtons,
 				setUser,
 				setAlreadyHaveAccount,
 				registerUser,
@@ -96,6 +174,12 @@ function ReferalProvider({ children }) {
 				logIn,
 				forgotPassword,
 				updatePassowrd,
+				getAllReferrals,
+				createReferral,
+				getOneReferral,
+				editReferralInformation,
+				deleteReferral,
+				getToken,
 			}}
 		>
 			{children}
