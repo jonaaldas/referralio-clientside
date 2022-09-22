@@ -163,7 +163,7 @@ function ReferalProvider({ children }) {
 		const res = await logInUserRequest(email, passowrd);
 		if (res?.response?.status === 401) {
 			toast("Email or Passowrd are incorrect");
-		} else if (res.status === 200) {
+		} else {
 			localStorage.setItem("user", JSON.stringify(res.data));
 			getAllReferrals();
 			navigate("/");
