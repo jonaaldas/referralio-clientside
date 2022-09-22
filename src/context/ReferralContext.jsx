@@ -126,6 +126,7 @@ function ReferalProvider({ children }) {
 	const deleteNote = async (referralId, noteId) => {
 		let token = getToken();
 		const res = await deleteNoteRequest(token, referralId, noteId);
+
 		if (res.status === 200) {
 			toast("note has been deleted");
 			let referralClient = referrals.filter((x) => {
