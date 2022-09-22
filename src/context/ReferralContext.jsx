@@ -21,6 +21,8 @@ import {
 	getOneReferralRequest,
 	editReferralRequest,
 	deleteReferralRequest,
+	addnoteRequest,
+	deleteNoteRequest,
 } from "../api/referralsApi";
 export const ReferralContext = createContext();
 
@@ -41,6 +43,24 @@ function ReferalProvider({ children }) {
 	const [activeButtons, setActiveButtons] = useState("");
 	// filtered referrals (seller and buyers)
 	const [filteredReferrals, setFilteredReferrals] = useState([]);
+
+	const dateTime = () => {
+		const currentdate = new Date();
+		return (
+			currentdate.getMonth() +
+			1 +
+			"/" +
+			currentdate.getDate() +
+			"/" +
+			currentdate.getFullYear() +
+			" @ " +
+			currentdate.getHours() +
+			":" +
+			currentdate.getMinutes() +
+			":" +
+			currentdate.getSeconds()
+		);
+	};
 
 	// ==============Referral manipulation Crud =================
 	const getAllReferrals = async () => {
@@ -88,6 +108,35 @@ function ReferalProvider({ children }) {
 		}
 	};
 	// ============== Referral manipulation Crud END =================
+
+	// ============== Referral Note manipulation=================
+
+	const addNote = async (referralId, note) => {
+		let token = getToken();
+		const res = await addnoteRequest(referralId, note, token);
+		if (res.status === 200) {
+			let referralClient = referrals.filter((x) => {
+				return x._id === referralId;
+			});
+			referralClient[0].agentNotes.push(note);
+			setReferrals((prevNotes) => [...prevNotes, referralClient]);
+		}
+	};
+
+	const deleteNote = async (referralId, noteId) => {
+		let token = getToken();
+		const res = await deleteNoteRequest(token, referralId, noteId);
+		if (res.status === 200) {
+			toast("note has been deleted");
+			let referralClient = referrals.filter((x) => {
+				return x._id === referralId;
+			});
+			let x = referralClient[0].agentNotes.filter((x) => x._id !== noteId);
+			referralClient[0].agentNotes = x;
+			setReferrals((prevNotes) => [...prevNotes, referralClient]);
+		}
+	};
+	// ============== Referral Note manipulation End=================
 
 	// ============== User functions start =================
 	// const register
@@ -181,6 +230,9 @@ function ReferalProvider({ children }) {
 				editReferralInformation,
 				deleteReferral,
 				getToken,
+				dateTime,
+				addNote,
+				deleteNote,
 			}}
 		>
 			{children}

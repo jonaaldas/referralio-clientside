@@ -3,6 +3,7 @@ import ReferalContainer from "./context/ReferralContext";
 import { Routes, Route } from "react-router-dom";
 import AuthPage from "./pages/AuthPage";
 import DashboardPage from "./pages/DashboardPage";
+import ReferralNotePage from "./pages/ReferralNotePage";
 import UpdateForgotPasswordPage from "./pages/UpdateForgorPasswordFormPage";
 import ProtectedRoutes from "./components/PtotectedRoutes";
 import { ToastContainer } from "react-toastify";
@@ -36,6 +37,11 @@ function App() {
 						exact
 						path='/client-information/:id'
 						element={<EachReferralDashboardPage />}
+					/>
+					<Route
+						exact
+						path='/update-client-notes/:id'
+						element={<ReferralNotePage />}
 					/>
 				</Route>
 			</Routes>

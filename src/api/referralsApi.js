@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 
-const url = 'http://localhost:5015/api/'
-// const url = 'https://referral-io.adaptable.app/api/'
+// const url = 'http://localhost:5015/api/'
+const url = 'https://referral-io.adaptable.app/api/'
 
 // get all referrals
 export const getAllReferralsRequest = async (token) =>{
@@ -44,6 +44,25 @@ export const editReferralRequest = async (token, client, referralId) =>{
 export const deleteReferralRequest = async (token, referralId) => {
   try {
     return await axios.delete(url + `deletereferral/${referralId}`, { headers: {"Authorization" : `Bearer ${token}`}})
+  } catch (error) {
+    return error
+  }
+}
+
+// add note
+
+export const addnoteRequest= async (referralId, note, token)=>{
+  try {
+    return await axios.post(url +  `createnote/${referralId}`, note, { headers: {"Authorization" : `Bearer ${token}`}})
+  } catch (error) {
+    return error
+  }
+}
+
+// delete note
+export const deleteNoteRequest = async (token, referralId, noteId) =>{
+  try {
+    return await axios.delete(url +  `deletenote/${referralId}/note/${noteId}`,{ headers: {"Authorization" : `Bearer ${token}`}})
   } catch (error) {
     return error
   }
