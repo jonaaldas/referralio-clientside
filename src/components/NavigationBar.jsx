@@ -1,6 +1,6 @@
 import { useReferralContext } from "../context/ReferralContext";
 function NavigationBar() {
-	const { logOut, user } = useReferralContext();
+	const { logOut } = useReferralContext();
 	return (
 		<header className='bg-gray-900'>
 			<div className='flex items-center h-16 max-w-screen-xl gap-8 px-4 mx-auto sm:px-6 lg:px-8'>
