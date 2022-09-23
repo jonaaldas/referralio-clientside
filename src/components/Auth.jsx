@@ -53,7 +53,7 @@ function Auth() {
 				if (alreadyHaveAccount) {
 					logIn(lowerCaseEmail, password);
 				} else {
-					registerUser(name, email, password);
+					registerUser(name, lowerCaseEmail, password);
 				}
 			}}
 		>
