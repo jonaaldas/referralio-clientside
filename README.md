@@ -1,70 +1,50 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Referral-io
 
-In the project directory, you can run:
+Referral System for Realtors! 
 
-### `npm start`
+**Link to live demo:** [https://transcendent-sunshine-b16a5f.netlify.app/auth)
+**YouTube:** [https://transcendent-sunshine-b16a5f.netlify.app/auth)
+**Checkout the backend:** [https://github.com/jonaaldas/referralio-serverside)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+![enter image description here](https://i.imgur.com/W6diMP6.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## How It's Made:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Tech used:** MongoDB, ExpressJS, React, Node, JWT Tokens for authentication and authorization, TailwindCss
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This app came to life when I was talking to a friend in the real estate industry. The problem I was trying to solve is the ability of a real estate agent to be able to receive and send referrals. Realtors do not have a platform for which agents can exchange referrals. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The main objective of this form is for the agent to be able to exchange referrals, I created the form using Fornik and Yup for authentication. The user fills out the form and the referral is saved in a MongoDB database. With this referral, the user can interact with it based if it's a sent referral or a received referral. 
+If the user receives a referral the user adds updates in the note sections, and he can also delete notes. The notes are rendered with react and we are getting the data from the database.  
 
-### `npm run eject`
+The backend is built with node and express. I used an MVC model to organize my folder structure to make sure everything is in the correct place, for faster development and faster debugging. For authentication and authorization used JWT Tokens. The tokens are saved in local storage I know this is not the safest place to store them however in the future I will build a more secure method. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Optimizations
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Let the user be able to receive and send referrals via WebSockets. Ad a profile page and let the user being able to edit their information. 
+Add notification via email and SMS so the users can get reminded of checking in with clients. 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Lessons Learned:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This is the application of the fit I integrated a full-on authentication and authorization feature using JTW tokens. I could have just used Auth0 or any other third-party service however I really wanted to build my own. I learned a lot about how to pass the token via the headers from the backend to the front end. How to store them and how to use protected routes to make sure cant do CRUD application to stuff it not theirs. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Examples:
+Take a look at these couple examples that I have in my own portfolio:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Checkout the backend:** [https://github.com/jonaaldas/referralio-serverside)
 
-### Analyzing the Bundle Size
+**Transaction Management App:** https://github.com/alecortega/palettable
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Sweet Treats (Hackathon Win):** https://github.com/jonaaldas/Hackathon-sweet-treats-heroku
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
