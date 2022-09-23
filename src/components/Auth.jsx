@@ -49,8 +49,9 @@ function Auth() {
 			initialValues={values}
 			onSubmit={(values) => {
 				const { name, email, password } = values;
+				let lowerCaseEmail = email.toLowerCase();
 				if (alreadyHaveAccount) {
-					logIn(email, password);
+					logIn(lowerCaseEmail, password);
 				} else {
 					registerUser(name, email, password);
 				}
