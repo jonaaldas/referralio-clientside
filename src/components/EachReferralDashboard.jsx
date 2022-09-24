@@ -85,7 +85,7 @@ function ClientDashboard() {
 			);
 		});
 	// send
-	return <section>{eachClient}</section>;
+	return <section className='bg-gray-50'>{eachClient}</section>;
 }
 
 export default ClientDashboard;

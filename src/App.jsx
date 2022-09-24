@@ -12,6 +12,7 @@ import EachReferralDashboardPage from "./pages/EachReferralDashboardPage";
 
 function App() {
 	return (
+		// <div className='flex flex-col h-screen mb-auto'>
 		<ReferalContainer>
 			<Routes>
 				<Route exact path='/auth' element={<AuthPage />} />
@@ -57,6 +58,7 @@ function App() {
 				pauseOnHover
 			/>
 		</ReferalContainer>
+		// </div>
 	);
 }
 

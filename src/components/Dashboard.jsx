@@ -11,9 +11,9 @@ function Dashboard() {
 		return (
 			<div
 				key={data._id}
-				className=' w-80 b-2 flex justify-evenly border-b-2 mb-3 mt-3'
+				className=' w-80 b-2 flex justify-evenly border-b-2 mb-3 mt-3 '
 			>
-				<div className='w-9/12'>
+				<div className='w-9/12 '>
 					<p>{data.clientsName}</p>
 					<p>Sent To: {data.realtorsName}</p>
 					<p>Date Referred: {data.referredDate}</p>
@@ -34,7 +34,7 @@ function Dashboard() {
 		);
 	});
 	return (
-		<section className='flex flex-col items-center'>
+		<section className='flex flex-col items-center bg-gray-50'>
 			{<TimeOfDay />}
 			<h2 className='text-2xl  sm:text-3xl'>Referals</h2>
 			<Link to='/create-referral'>
