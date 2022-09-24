@@ -9,7 +9,7 @@ function ClientDashboard() {
 		.filter((foo) => foo._id === params.id)
 		.map((data) => {
 			return (
-				<div key={data._id}>
+				<div key={data._id} className='w-3/4 max-w-3xl'>
 					<div className='flex place-content-between'>
 						<Link to='/'>
 							<TiChevronLeft className='text-5xl text-blue-500 mt-2 ml-2 mb-3' />
@@ -85,7 +85,11 @@ function ClientDashboard() {
 			);
 		});
 	// send
-	return <section className='bg-gray-50'>{eachClient}</section>;
+	return (
+		<section className='bg-gray-50 flex justify-center align-center flex-col'>
+			{eachClient}
+		</section>
+	);
 }
 
 export default ClientDashboard;

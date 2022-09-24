@@ -162,37 +162,39 @@ function CreateEditForm() {
 									<label>No</label>
 								</div>
 							</div>
-							{lenderQuestionBoolean === true ||
-							(params.id &&
-								values.LendersName !== "" &&
-								values.LendersEmail !== "" &&
-								values.LendersPhoneNumber !== "" &&
-								values.Financing !== "") ? (
-								<FinancingQuestions
-									value={{ values }}
-									handleChange={{ handleChange }}
-								/>
-							) : null}
-							{/* Client details questions */}
-							<div className='flex flex-col items-center w-full'>
-								<h3>Do you know the house they want?</h3>
-								<div>
-									<input
-										type='radio'
-										id='true'
-										name='clientYes'
-										value={true}
-										onClick={() => setClientDetailsBoolean(true)}
+							<div className='w-full'>
+								{lenderQuestionBoolean === true ||
+								(params.id &&
+									values.LendersName !== "" &&
+									values.LendersEmail !== "" &&
+									values.LendersPhoneNumber !== "" &&
+									values.Financing !== "") ? (
+									<FinancingQuestions
+										value={{ values }}
+										handleChange={{ handleChange }}
 									/>
-									<label>Yes</label>
-									<input
-										type='radio'
-										id='false'
-										name='clientNo'
-										value={false}
-										onClick={() => setClientDetailsBoolean(false)}
-									/>
-									<label>No</label>
+								) : null}
+								{/* Client details questions */}
+								<div className='flex flex-col items-center w-full'>
+									<h3>Do you know the house they want?</h3>
+									<div>
+										<input
+											type='radio'
+											id='true'
+											name='clientYes'
+											value={true}
+											onClick={() => setClientDetailsBoolean(true)}
+										/>
+										<label>Yes</label>
+										<input
+											type='radio'
+											id='false'
+											name='clientNo'
+											value={false}
+											onClick={() => setClientDetailsBoolean(false)}
+										/>
+										<label>No</label>
+									</div>
 								</div>
 							</div>
 							{clientDetailsBoolean === true ||
