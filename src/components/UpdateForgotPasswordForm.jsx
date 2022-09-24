@@ -3,7 +3,6 @@ import { Formik, ErrorMessage, Form } from "formik";
 import AuthInput from "./AuthInputs";
 import { useReferralContext } from "../context/ReferralContext";
 import { useLocation } from "react-router-dom";
-import { toast } from "react-toastify";
 
 function UpdateForgotPasswordForm() {
 	const location = useLocation();

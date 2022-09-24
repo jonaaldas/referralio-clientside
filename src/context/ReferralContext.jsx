@@ -1,15 +1,8 @@
-import {
-	useState,
-	createContext,
-	useContext,
-	useEffect,
-	useCallback,
-} from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
 	logInUserRequest,
 	registerUserRequest,
-	getUserRequest,
 	forgotPasswordRequest,
 	updatePasswordRequest,
 } from "../api/userApi";

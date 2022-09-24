@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
 function Footer() {
 	return (
 		<footer className='p-4 bg-white sm:p-6 dark:bg-gray-900 fixed inset-x-0 bottom-0'>
 			<div className='sm:flex sm:items-center sm:justify-between'>
 				<a
-					href='https://youtube.com'
+					href='https://youtu.be/vFMZQ1TmQjg'
 					target='_blank'
 					className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
 					rel='noreferrer'
