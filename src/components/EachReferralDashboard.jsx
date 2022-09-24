@@ -86,7 +86,7 @@ function ClientDashboard() {
 		});
 	// send
 	return (
-		<section className='bg-gray-50 flex justify-center align-center flex-col'>
+		<section className='bg-gray-50 flex justify-center items-center flex-col w-full'>
 			{eachClient}
 		</section>
 	);
